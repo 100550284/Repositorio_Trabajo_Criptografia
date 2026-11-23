@@ -1,0 +1,17 @@
+{
+  "alvaro": {
+    "kdf": "scrypt(N=16384,r=8,p=1)",
+    "salt_auth": "J+u2H8BFKRg/fROnATfx5Q==",
+    "auth_hash": "YPMG1tGm4L9msdYHA5K2WF0i1AkvY9qiC8OmWRam+1s=",
+    "salt_kdf": "LYI3YNE0O8+eVW8rqgc0xw==",
+    "ecdsa_curve": "SECP256R1",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECICwvQmQcspV/S/ijanxhZg7Ix2z\nfJY5bU37eWJyrYxZtElRKde31SfZF5U1NvbkUvAr9Kw2DfSNPAaXuVk5ZQ==\n-----END PUBLIC KEY-----\n",
+    "encrypted_private_key": {
+      "algorithm": "AES-256-GCM",
+      "nonce": "rcID4UaV5Vzo3FlI",
+      "ciphertext": "Zh52qhlHZax0OdKO5iNOv3fMNZXlsLuYLAM5KPQbkSwq7Z5sflRMUUbO0Fa9Srb3HDR7e+1PjR0HXDubg8MT940vuygkvgjOqhwQzkfCkhX3mYEkQ09hGXb8OUg8tw8bbiTNDewIxr6Mz5Iwotd8bbeTYgvgtoefvUmfEpwSDHnpohni3ZDg3NwN8Pwl1g6BLyHI/7R7Q0y+WDaUklPuYqQrnB5WUTE8tgVxLMBV6OFFYQ4BRzrda/igvNKscz26Poybb3UuK5VoENDC57+c6yQua3GvGx1zd92GD7gLBZDMQSovsxNHtrS22/a/wylt+A==",
+      "tag": "2ZNpFJAVNb0TT6Whblc+tg=="
+    },
+    "created_at": "2026-11-23T16:41:12.552165+00:00"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "a1d4e874fb48": {
+    "doc_id": "a1d4e874fb48",
+    "owner": "alvaro",
+    "version": 1,
+    "title": "Acta",
+    "created_at": "2026-11-23T16:45:05.062738+00:00",
+    "algorithm": "AES-256-GCM",
+    "nonce": "bmidlOZjHUDAkrOQ",
+    "ciphertext": "jCSVLdE1viXyMSz1F9HXNzka0jPZ1N4JXaB8a/PksQ==",
+    "tag": "3xKz9y5i0I53PzGOeF3Ngw=="
+  }
+}

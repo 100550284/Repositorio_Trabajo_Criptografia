@@ -1,0 +1,16 @@
+{
+  "58bf3716ae8e": {
+    "algorithm": "ECDSA-SECP256R1-SHA256",
+    "payload": {
+      "signed_id": "58bf3716ae8e",
+      "signer": "alvaro",
+      "doc_id": "a1d4e874fb48",
+      "title": "Acta",
+      "content": "Presupuesto actual: 5000  euros",
+      "content_sha256": "c705de44aef21559d5925265fd7bc9c5254148ef88f77f0de44f7283cde7947b",
+      "signed_at": "2026-11-23T16:47:19.657068+00:00",
+      "sign_nonce": "9f648482650caf06118b9308a6b3cb5c"
+    },
+    "signature": "MEQCIBgdV2i0jFyyA0IF4ZvaVA/X9voSnzRXrEkgUgQ7T4CcAiAMItTRd7JPs3i54ZlkFl/CT4wRZlVovTNGSyVPD+iXFA=="
+  }
+}

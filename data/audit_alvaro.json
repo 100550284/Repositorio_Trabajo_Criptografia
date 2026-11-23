@@ -1,0 +1,38 @@
+[
+  {
+    "seq": 1,
+    "timestamp": "2026-11-23T16:41:12.555255+00:00",
+    "username": "alvaro",
+    "action": "USER_REGISTERED",
+    "detail": "Alta de cuenta y par ECDSA P-256",
+    "prev_hmac": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hmac": "84a035f7ee2c53fa170b314f66dd34e5322b010a0ac5f6d83d30254b7ab0a6d2"
+  },
+  {
+    "seq": 2,
+    "timestamp": "2026-11-23T16:41:47.818241+00:00",
+    "username": "alvaro",
+    "action": "USER_LOGIN",
+    "detail": "Inicio de sesión verificado",
+    "prev_hmac": "84a035f7ee2c53fa170b314f66dd34e5322b010a0ac5f6d83d30254b7ab0a6d2",
+    "hmac": "72d7bc9e6087dadd0b2efdd231e978043113485da9f9e9c2bfafe67711a1d884"
+  },
+  {
+    "seq": 3,
+    "timestamp": "2026-11-23T16:45:05.080241+00:00",
+    "username": "alvaro",
+    "action": "DOC_ENCRYPTED",
+    "detail": "doc_id=a1d4e874fb48, title=Acta",
+    "prev_hmac": "72d7bc9e6087dadd0b2efdd231e978043113485da9f9e9c2bfafe67711a1d884",
+    "hmac": "18c9247557fd4ba6b8e3edb59b86415a4fbb5b399eb74b4d167c409dee7c9751"
+  },
+  {
+    "seq": 4,
+    "timestamp": "2026-11-23T16:47:19.674978+00:00",
+    "username": "alvaro",
+    "action": "DOC_SIGNED",
+    "detail": "signed_id=58bf3716ae8e, doc_id=a1d4e874fb48",
+    "prev_hmac": "18c9247557fd4ba6b8e3edb59b86415a4fbb5b399eb74b4d167c409dee7c9751",
+    "hmac": "003594b4c405ef74ad4ce544481315239be765ddad3098d5abbbd0bd50467d3c"
+  }
+]
