@@ -1,3 +1,8 @@
+"""
+Suite de pruebas positivas y negativas de seguridad para VaultSign.
+Ejecución: python -m unittest -v test_security.py
+"""
+
 import base64
 import json
 import tempfile
