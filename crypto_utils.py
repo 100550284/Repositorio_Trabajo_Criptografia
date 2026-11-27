@@ -1,5 +1,5 @@
 """
-Módulo de primitivas criptográficas para VaultSign.
+Módulo de primitivas criptográficas para CadenaFría.
 Separa la lógica criptográfica de la lógica de negocio y la persistencia.
 """
 
@@ -17,7 +17,7 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
 # Parámetros criptográficos constantes (estándares actuales)
-SCRYPT_N = 2**14        # 16384 iteraciones (~16 MB de RAM por derivación)
+SCRYPT_N = 2**14        # 16384 iteraciones (~16 MiB de RAM por derivación)
 SCRYPT_R = 8
 SCRYPT_P = 1
 KEY_LEN = 32            # 256 bits
@@ -72,12 +72,12 @@ def verify_password(password: str, salt: bytes, expected_hash: bytes) -> bool:
 def derive_subkeys(master_key: bytes, salt: bytes) -> Dict[str, bytes]:
     """
     Deriva 3 claves independientes de 256 bits mediante HKDF-SHA256
-    para garantizar separación de dominios criptográficos.
+    para garantizar separación de dominios criptográficos en CadenaFría.
     """
     purposes = {
-        "enc_key": b"vaultsign-v1-aes-256-gcm-docs",
-        "mac_key": b"vaultsign-v1-hmac-sha256-audit",
-        "keywrap_key": b"vaultsign-v1-aes-256-gcm-keywrap",
+        "enc_key": b"cadenafria-v1-aes-256-gcm-lotes",
+        "mac_key": b"cadenafria-v1-hmac-sha256-telemetria",
+        "keywrap_key": b"cadenafria-v1-aes-256-gcm-keywrap",
     }
     subkeys = {}
     for name, info in purposes.items():
@@ -94,7 +94,7 @@ def derive_subkeys(master_key: bytes, salt: bytes) -> Dict[str, bytes]:
 def aes_gcm_encrypt(key: bytes, plaintext: bytes, aad: bytes) -> Dict[str, str]:
     """
     Cifrado autenticado AES-256-GCM.
-    Genera un nonce aleatorio de 96 bits en cada llamada (jamás reutilizado).
+    Genera un nonce aleatorio fresco de 96 bits en cada cifrado.
     """
     if len(key) != KEY_LEN:
         raise CryptoError("La clave AES debe ser de 256 bits (32 bytes).")
@@ -135,7 +135,7 @@ def aes_gcm_decrypt(
         return aesgcm.decrypt(nonce, ciphertext + tag, aad)
     except InvalidTag as exc:
         raise IntegrityError(
-            "Verificación AES-256-GCM fallida: datos, tag, nonce o metadatos alterados."
+            "Verificación AES-256-GCM fallida: datos cifrados, tag, nonce o AAD alterados."
         ) from exc
     except Exception as exc:
         if isinstance(exc, IntegrityError):
@@ -155,7 +155,7 @@ def compute_hmac_sha256(key: bytes, data: bytes) -> str:
 def verify_hmac_sha256(key: bytes, data: bytes, expected_hex: str) -> None:
     """
     Verifica una etiqueta HMAC-SHA256 en tiempo constante.
-    Lanza IntegrityError si no coincide.
+    Lanza IntegrityError si la etiqueta no coincide.
     """
     try:
         expected_bytes = bytes.fromhex(expected_hex)
@@ -168,7 +168,7 @@ def verify_hmac_sha256(key: bytes, data: bytes, expected_hex: str) -> None:
         mac.verify(expected_bytes)
     except InvalidSignature as exc:
         raise IntegrityError(
-            "Verificación HMAC-SHA256 fallida: el registro ha sido manipulado."
+            "Verificación HMAC-SHA256 fallida: el registro de temperatura ha sido manipulado."
         ) from exc
 
 
@@ -183,7 +183,7 @@ def generate_ecdsa_keypair() -> Tuple[bytes, str]:
     private_pem = private_key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption(),  # Se cifra inmediatamente con AES-GCM
+        encryption_algorithm=serialization.NoEncryption(),  # Se cifra enseguida con AES-GCM
     )
     public_pem = public_key.public_bytes(
         encoding=serialization.Encoding.PEM,

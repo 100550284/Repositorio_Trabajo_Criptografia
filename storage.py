@@ -1,5 +1,5 @@
 """
-Módulo de persistencia segura en ficheros JSON para VaultSign.
+Módulo de persistencia segura en ficheros JSON para CadenaFría.
 """
 
 import json
@@ -9,7 +9,7 @@ from typing import Any
 
 
 class SecureStorage:
-    """Gestiona los ficheros de usuarios, bóvedas, auditoría y documentos firmados."""
+    """Gestiona los ficheros de operadores, lotes, telemetría y albaranes firmados."""
 
     def __init__(self, base_dir: str = "data") -> None:
         self.base_dir = Path(base_dir)
@@ -42,15 +42,15 @@ class SecureStorage:
             json.dump(data, fh, indent=2, ensure_ascii=False)
         self._restrict_file_permissions(file_path)
 
-    def users_file(self) -> str:
-        return "users.json"
+    def operadores_file(self) -> str:
+        return "operadores.json"
 
-    def vault_file(self, username: str) -> str:
-        return f"vault_{username}.json"
+    def lotes_file(self, operador: str) -> str:
+        return f"lotes_{operador}.json"
 
-    def audit_file(self, username: str) -> str:
-        return f"audit_{username}.json"
+    def telemetria_file(self, operador: str) -> str:
+        return f"telemetria_{operador}.json"
 
-    def signed_file(self) -> str:
-        return "signed_docs.json"
+    def albaranes_file(self) -> str:
+        return "albaranes_firmados.json"
     
